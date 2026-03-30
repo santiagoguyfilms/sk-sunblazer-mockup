@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK Sunblazer Soccer Club — Official Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --royal: #1A3C9E;
+  --royal-deep: #0F2666;
+  --royal-dark: #0A1A4A;
+  --royal-darker: #071237;
+  --royal-light: #2B5DD4;
+  --royal-glow: rgba(43,93,212,0.25);
+  --gold: #FFD200;
+  --gold-bright: #FFE033;
+  --gold-dark: #D4AD00;
+  --gold-glow: rgba(255,210,0,0.2);
+  --white: #FFFFFF;
+  --blue-100: #C8D6F0;
+  --blue-400: #7B8FBF;
+  --card: #0E1F52;
+  --card-hover: #132A6A;
+  --line: rgba(255,255,255,0.08);
+  --line-blue: rgba(43,93,212,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--royal-darker);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── SVG SHIELD for backgrounds (inline, no white box) ── */
+.shield-watermark{position:absolute;pointer-events:none;z-index:0}
+.shield-watermark svg{width:100%;height:100%}
+
+/* ── TOPBAR ── */
+.topbar{background:rgba(7,18,55,.95);border-bottom:1px solid var(--line);padding:6px 0;font-size:12px;color:var(--blue-400);backdrop-filter:blur(20px);position:relative;z-index:101}
+.topbar-in{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.topbar a{color:var(--blue-400);text-decoration:none;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:11px;transition:color .3s}
+.topbar a:hover{color:var(--gold)}
+.topbar-links{display:flex;gap:24px}
+.motto{font-style:italic;color:var(--gold-dark);letter-spacing:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;text-transform:uppercase}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,26,74,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo{width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 0 10px var(--gold-glow))}
+.nav-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;color:var(--white);text-transform:uppercase;letter-spacing:2px;line-height:1.1}
+.nav-name span{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:11px;color:var(--gold);letter-spacing:4px}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:15px;color:var(--blue-100);text-decoration:none;text-transform:uppercase;letter-spacing:2px;padding:8px 14px;border-radius:4px;transition:all .3s;position:relative}
+.nav-links a:hover{color:var(--gold);background:rgba(255,210,0,.06)}
+.nav-links a.on{color:var(--white)}
+.nav-links a.on::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--royal-dark)!important;font-weight:700!important;padding:10px 22px!important;border-radius:6px!important}
+.nav-cta:hover{background:var(--gold-bright)!important;box-shadow:0 0 28px var(--gold-glow)!important;transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{position:relative;height:90vh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-photo{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80') center/cover;transform:scale(1.05);animation:hz 20s ease-in-out infinite alternate}
+@keyframes hz{to{transform:scale(1.12)}}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,18,55,.2) 0%,rgba(7,18,55,.5) 35%,rgba(7,18,55,.94) 78%,var(--royal-darker) 100%),linear-gradient(90deg,rgba(7,18,55,.85) 0%,transparent 55%);z-index:1}
+/* Hero crest — large, clean, right side with soft glow behind it */
+.hero-crest{position:absolute;right:6%;top:42%;transform:translateY(-50%);z-index:2;animation:fadeUp 1s ease-out .3s both}
+.hero-crest img{width:360px;height:360px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(255,210,0,.15)) drop-shadow(0 0 80px rgba(26,60,158,.2))}
+/* Radial glow behind the crest — no PNG watermark, just light */
+.hero-crest::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,210,0,.08) 0%,rgba(26,60,158,.06) 35%,transparent 65%);border-radius:50%;z-index:-1;animation:gp 5s ease-in-out infinite alternate}
+@keyframes gp{0%{transform:translate(-50%,-50%) scale(1);opacity:.6}to{transform:translate(-50%,-50%) scale(1.1);opacity:1}}
+/* SVG shield outlines — atmospheric, not logo PNG */
+.hero .shield-watermark{right:-4%;top:50%;transform:translateY(-50%);width:650px;height:650px;opacity:.035;animation:sf 18s ease-in-out infinite alternate}
+@keyframes sf{0%{transform:translateY(-50%) rotate(-1deg)}to{transform:translateY(-50%) rotate(2deg)}}
+.hero-stripe{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--royal-light),var(--gold));z-index:5}
+.hero-body{position:relative;z-index:4;max-width:1400px;margin:0 auto;padding:0 24px 80px;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,210,0,.12);border:1px solid rgba(255,210,0,.3);padding:6px 16px;border-radius:100px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;animation:fadeUp .8s ease-out both}
+.hero-tag::before{content:'';width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(52px,8vw,108px);line-height:.9;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .8s ease-out .2s both}
+.hero h1 em{font-style:normal;color:var(--gold);text-shadow:0 0 50px var(--gold-glow)}
+.hero-sub{font-size:20px;font-weight:300;color:var(--blue-100);max-width:500px;line-height:1.6;margin-bottom:36px;animation:fadeUp .8s ease-out .4s both}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s ease-out .6s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.btn-a{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--royal-dark);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:2px;padding:16px 36px;border:none;border-radius:6px;cursor:pointer;text-decoration:none;transition:all .3s;box-shadow:0 4px 24px var(--gold-glow)}
+.btn-a:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 8px 40px rgba(255,210,0,.35)}
+.btn-b{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;letter-spacing:2px;padding:16px 36px;border:2px solid var(--royal-light);border-radius:6px;cursor:pointer;text-decoration:none;transition:all .3s}
+.btn-b:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,210,0,.05)}
+
+/* ── NEXT MATCH ── */
+.match-bar{background:linear-gradient(135deg,var(--royal),var(--royal-deep));border-top:3px solid var(--gold);position:relative;overflow:hidden}
+.match-bar .shield-watermark{right:16px;top:50%;transform:translateY(-50%);width:100px;height:100px;opacity:.04}
+.match-in{max-width:1400px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;z-index:1}
+.match-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--gold);background:rgba(255,210,0,.1);padding:6px 14px;border-radius:4px;border:1px solid rgba(255,210,0,.2)}
+.match-teams{display:flex;align-items:center;gap:24px;flex:1;justify-content:center}
+.match-team{display:flex;align-items:center;gap:12px}
+.badge{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:14px}
+.badge-home{background:var(--gold);color:var(--royal-dark);box-shadow:0 0 16px var(--gold-glow)}
+.badge-away{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);color:var(--blue-100)}
+.match-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:1px}
+.match-vs{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--blue-400);text-transform:uppercase;letter-spacing:3px}
+.countdown{display:flex;gap:12px}
+.cd-unit{text-align:center}
+.cd-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;color:var(--gold);line-height:1}
+.cd-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;color:var(--blue-400);text-transform:uppercase;letter-spacing:2px}
+.cd-sep{font-family:'Oswald',sans-serif;font-size:30px;color:rgba(255,255,255,.2);line-height:1}
+.match-right{text-align:right;white-space:nowrap}
+.match-date{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:1px}
+.match-venue{font-size:12px;color:var(--blue-400);margin-top:2px}
+
+/* ── SECTIONS ── */
+.sec{max-width:1400px;margin:0 auto;padding:80px 24px;position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;position:relative;z-index:2}
+.sec-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:8px}
+.sec-title{font-family:'Oswald',sans-serif;font-weight:700;font-size:42px;text-transform:uppercase;letter-spacing:1px;line-height:1}
+.sec-link{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s}
+.sec-link:hover{gap:14px}
+.sec-link::after{content:'\2192'}
+
+/* ── NEWS ── */
+.news-wrap{position:relative;overflow:hidden}
+.news-wrap .shield-watermark{left:-4%;top:45%;transform:translateY(-50%);width:400px;height:400px;opacity:.02}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:20px;position:relative;z-index:2}
+.news-card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--line);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.news-card:hover{border-color:var(--line-blue);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 30px var(--royal-glow)}
+.news-card.feat{grid-row:span 2}
+.news-card-img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.news-card.feat .news-card-img{aspect-ratio:auto;flex:1;min-height:300px}
+.news-card-body{padding:24px}
+.news-card-cat{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:10px}
+.news-card-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:22px;text-transform:uppercase;line-height:1.2;margin-bottom:10px}
+.news-card.feat .news-card-title{font-size:28px}
+.news-card-meta{font-size:13px;color:var(--blue-400)}
+
+/* ── FIXTURES ── */
+.fix-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--royal-light) transparent;position:relative;z-index:2}
+.fix-card{flex:0 0 320px;background:var(--card);border-radius:12px;border:1px solid var(--line);padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.fix-card:hover{border-color:var(--line-blue);background:var(--card-hover)}
+.fix-card.next{border-color:var(--gold);background:linear-gradient(135deg,rgba(255,210,0,.08),rgba(26,60,158,.2))}
+.fix-card.next::before{content:'NEXT';position:absolute;top:16px;right:16px;background:var(--gold);color:var(--royal-dark);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:3px}
+.fix-comp{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:20px}
+.fix-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.fix-team{text-align:center;flex:1}
+.fix-badge{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:16px}
+.fix-badge.hb{background:var(--gold);color:var(--royal-dark);box-shadow:0 0 16px var(--gold-glow)}
+.fix-badge.ab{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);color:var(--blue-400)}
+.fix-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px}
+.fix-vs{font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--blue-400);text-transform:uppercase;letter-spacing:2px}
+.fix-foot{border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.fix-date{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px}
+.fix-time{font-family:'Oswald',sans-serif;font-weight:600;font-size:18px;color:var(--gold)}
+
+/* ── MOTTO BANNER — crest as centerpiece ── */
+.motto-sec{text-align:center;padding:100px 24px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--royal-darker),var(--royal-dark),var(--royal-darker))}
+.motto-crest{position:relative;display:inline-block;margin-bottom:32px}
+.motto-crest img{width:160px;height:160px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 0 30px rgba(255,210,0,.2))}
+.motto-crest::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;background:radial-gradient(circle,rgba(255,210,0,.1) 0%,rgba(26,60,158,.06) 35%,transparent 60%);z-index:1;animation:gp 5s ease-in-out infinite alternate}
+.motto-sec .shield-watermark{left:50%;top:50%;transform:translate(-50%,-50%);width:500px;height:500px;opacity:.02}
+.motto-text{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(28px,5vw,52px);text-transform:uppercase;letter-spacing:8px;position:relative;z-index:2}
+.motto-text .dot{display:inline-block;width:12px;height:12px;background:var(--gold);border-radius:50%;margin:0 20px;vertical-align:middle;box-shadow:0 0 12px var(--gold-glow)}
+.motto-sub{font-family:'Barlow Condensed',sans-serif;font-size:15px;color:var(--blue-400);text-transform:uppercase;letter-spacing:6px;margin-top:16px;position:relative;z-index:2}
+
+/* ── PLAYERS — shield glow behind grid ── */
+.players-sec{background:linear-gradient(180deg,var(--royal-darker),var(--royal) 50%,var(--royal-darker));position:relative;overflow:hidden}
+.players-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(255,210,0,.05) 0%,rgba(26,60,158,.07) 35%,transparent 60%);pointer-events:none}
+.players-sec .shield-watermark{left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:700px;opacity:.025}
+.players-sec::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--royal-light),var(--gold),var(--royal-light))}
+.p-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative;z-index:2}
+.p-card{background:linear-gradient(180deg,rgba(26,60,158,.5),var(--card));border-radius:16px;border:1px solid var(--line);overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer}
+.p-card:hover{transform:translateY(-8px);border-color:rgba(255,210,0,.3);box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 40px var(--gold-glow)}
+.p-img{position:relative;aspect-ratio:3/4;background:linear-gradient(180deg,var(--royal),var(--royal-dark));overflow:hidden}
+.p-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}
+.p-card:hover .p-img img{transform:scale(1.05)}
+.p-num{position:absolute;top:12px;left:16px;font-family:'Oswald',sans-serif;font-weight:700;font-size:52px;color:rgba(255,210,0,.12);line-height:1}
+.p-info{padding:20px}
+.p-pos{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
+.p-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;line-height:1.1}
+
+/* ── STATS ── */
+.stats{background:var(--royal);position:relative;overflow:hidden}
+.stats::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,210,0,.07),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(43,93,212,.12),transparent 50%)}
+.stats .shield-watermark.sl{left:-50px;top:50%;transform:translateY(-50%) rotate(-12deg);width:240px;height:240px;opacity:.03}
+.stats .shield-watermark.sr{right:-50px;top:50%;transform:translateY(-50%) rotate(12deg);width:240px;height:240px;opacity:.03}
+.stats-grid{max-width:1400px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1}
+.stat{text-align:center}
+.stat-n{font-family:'Oswald',sans-serif;font-weight:700;font-size:60px;color:var(--gold);text-shadow:0 0 30px var(--gold-glow);line-height:1;margin-bottom:8px}
+.stat-l{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--blue-100)}
+
+/* ── CTA ── */
+.cta{position:relative;padding:120px 24px;overflow:hidden;text-align:center}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(26,60,158,.2),transparent 60%),linear-gradient(180deg,var(--royal-darker),var(--royal-dark))}
+.cta .shield-watermark.cl{left:-8%;top:50%;transform:translateY(-50%);width:400px;height:400px;opacity:.02}
+.cta .shield-watermark.cr{right:-8%;top:50%;transform:translateY(-50%);width:400px;height:400px;opacity:.02}
+.cta-body{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.cta h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(36px,6vw,64px);text-transform:uppercase;line-height:.95;margin-bottom:20px}
+.cta h2 em{font-style:normal;color:var(--gold)}
+.cta-sub{font-size:18px;color:var(--blue-100);margin-bottom:40px;line-height:1.6}
+.cta-badges{display:flex;justify-content:center;gap:32px;margin-top:40px}
+.cta-badge{text-align:center}
+.cta-icon{width:52px;height:52px;background:var(--royal);border:1px solid var(--line-blue);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:22px}
+.cta-txt{font-family:'Barlow Condensed',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--blue-400)}
+
+/* ── FOOTER ── */
+.foot{background:var(--royal-dark);border-top:3px solid var(--gold);padding:60px 24px 32px;position:relative;overflow:hidden}
+.foot .shield-watermark{right:30px;bottom:20px;width:180px;height:180px;opacity:.02}
+.foot-in{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.foot-desc{font-size:14px;color:var(--blue-400);line-height:1.7;margin-top:16px;max-width:320px}
+.foot h4{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:20px}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.foot-links a{color:var(--blue-100);text-decoration:none;font-size:14px;transition:color .3s}
+.foot-links a:hover{color:var(--gold)}
+.foot-social{display:flex;gap:12px;margin-top:20px}
+.foot-social a{width:40px;height:40px;background:var(--card);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue-100);text-decoration:none;font-size:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;transition:all .3s}
+.foot-social a:hover{background:var(--gold);color:var(--royal-dark);border-color:var(--gold)}
+.foot-bot{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--blue-400)}
+.foot-partners{display:flex;gap:16px}
+.foot-partners span{font-family:'Barlow Condensed',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--blue-400);padding:6px 14px;border:1px solid var(--line);border-radius:4px}
+.foot-by{font-size:11px;color:var(--blue-400);margin-top:16px;text-align:center}
+.foot-by a{color:var(--gold);text-decoration:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.p-grid{grid-template-columns:repeat(3,1fr)}.news-grid{grid-template-columns:1fr}.news-card.feat{grid-row:span 1}.foot-grid{grid-template-columns:1fr 1fr}.hero-crest{width:280px;height:280px;right:3%}.hero-crest img{width:280px;height:280px}}
+@media(max-width:768px){.nav-links{display:none}.hero{height:80vh;min-height:540px}.hero h1{font-size:52px}.hero-crest{display:none}.match-in{flex-direction:column;text-align:center;gap:20px}.countdown{justify-content:center}.match-right{text-align:center}.p-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr);gap:32px}.foot-grid{grid-template-columns:1fr}.foot-bot{flex-direction:column;gap:16px;text-align:center}.fix-card{flex:0 0 280px}.motto-text .dot{width:8px;height:8px;margin:0 12px}.motto-crest img{width:120px;height:120px}}
+@media(max-width:480px){.p-grid{grid-template-columns:1fr 1fr;gap:12px}.stat-n{font-size:42px}.cta-badges{flex-wrap:wrap;gap:20px}}
+</style>
+</head>
+<body>
+
+<!-- Inline SVG shield template used for watermarks — clean vector, no white box -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="shield" viewBox="0 0 200 240">
+      <path d="M100 8 L8 50 Q4 52 4 56 L4 130 Q4 180 100 232 Q196 180 196 130 L196 56 Q196 52 192 50 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M100 28 L24 62 L24 130 Q24 170 100 214 Q176 170 176 130 L176 62 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+      <circle cx="100" cy="100" r="35" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+      <line x1="100" y1="20" x2="100" y2="60" stroke="currentColor" stroke-width="1" opacity=".3"/>
+      <line x1="60" y1="55" x2="80" y2="75" stroke="currentColor" stroke-width="1" opacity=".2"/>
+      <line x1="140" y1="55" x2="120" y2="75" stroke="currentColor" stroke-width="1" opacity=".2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- TOPBAR -->
+<div class="topbar"><div class="topbar-in">
+  <span class="motto">Heart &middot; Strength &middot; Courage</span>
+  <div class="topbar-links"><a href="#">Est. 1992 &middot; Miami, FL</a><a href="#">Parents Portal</a><a href="#">Coach Login</a></div>
+</div></div>
+
+<!-- NAV -->
+<nav class="nav"><div class="nav-in">
+  <a href="#" class="nav-brand">
+    <img src="sk sunblazer.png" alt="SK Sunblazer" class="nav-logo">
+    <div class="nav-name">SK Sunblazer<span>Soccer Club</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="on">Home</a></li>
+    <li><a href="#">Teams</a></li>
+    <li><a href="#">Schedule</a></li>
+    <li><a href="#">Players</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#" class="nav-cta">Register Now</a></li>
+  </ul>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-grad"></div>
+  <div class="shield-watermark" style="right:-4%;top:50%;transform:translateY(-50%);width:650px;height:650px;opacity:.035">
+    <svg><use href="#shield" style="color:var(--blue-100)"/></svg>
+  </div>
+  <div class="hero-crest">
+    <img src="sk sunblazer.png" alt="SK Sunblazer">
+  </div>
+  <div class="hero-stripe"></div>
+  <div class="hero-body">
+    <div class="hero-tag">Tryouts Open &middot; May 3, 2026</div>
+    <h1>HEART<br><em>STRENGTH</em><br>COURAGE</h1>
+    <p class="hero-sub">Building champions since 1992. Elite youth soccer development in the heart of Miami — where passion meets the pitch.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-a">Register for Tryouts</a>
+      <a href="#" class="btn-b">Watch Highlights</a>
+    </div>
+  </div>
+</section>
+
+<!-- MATCH BAR -->
+<section class="match-bar">
+  <div class="shield-watermark" style="right:16px;top:50%;transform:translateY(-50%);width:100px;height:100px;opacity:.04">
+    <svg><use href="#shield" style="color:var(--gold)"/></svg>
+  </div>
+  <div class="match-in">
+    <div class="match-label">Next Match</div>
+    <div class="match-teams">
+      <div class="match-team"><div class="badge badge-home">SK</div><span class="match-name">Sunblazer</span></div>
+      <span class="match-vs">vs</span>
+      <div class="match-team"><div class="badge badge-away">DS</div><span class="match-name">Davie Sharks</span></div>
+    </div>
+    <div class="countdown">
+      <div class="cd-unit"><div class="cd-num" id="days">05</div><div class="cd-lbl">Days</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="cd-num" id="hours">12</div><div class="cd-lbl">Hrs</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="cd-num" id="mins">34</div><div class="cd-lbl">Min</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><div class="cd-num" id="secs">56</div><div class="cd-lbl">Sec</div></div>
+    </div>
+    <div class="match-right">
+      <div class="match-date">Sat, April 5 &middot; 12:00 PM</div>
+      <div class="match-venue">Thomas Ave Field, Miami</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news-wrap">
+  <div class="shield-watermark" style="left:-3%;top:45%;transform:translateY(-50%);width:350px;height:350px;opacity:.02">
+    <svg><use href="#shield" style="color:var(--royal-light)"/></svg>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><div><div class="sec-tag">Latest</div><h2 class="sec-title">Club News</h2></div><a href="#" class="sec-link">All News</a></div>
+    <div class="news-grid">
+      <a class="news-card feat"><img class="news-card-img" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&q=80" alt="Match"><div class="news-card-body"><div class="news-card-cat">Match Report</div><h3 class="news-card-title">U10 Squad Dominates Weekend Clash with 4-1 Victory</h3><div class="news-card-meta">March 22, 2026</div></div></a>
+      <a class="news-card"><img class="news-card-img" src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80" alt="Training"><div class="news-card-body"><div class="news-card-cat">Announcement</div><h3 class="news-card-title">Summer Camp Registration Now Open — June 8 Kickoff</h3><div class="news-card-meta">March 20, 2026</div></div></a>
+      <a class="news-card"><img class="news-card-img" src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=600&q=80" alt="Tournament"><div class="news-card-body"><div class="news-card-cat">Tournament</div><h3 class="news-card-title">Carnival 5v5 Tournament — April 4th Entry Confirmed</h3><div class="news-card-meta">March 18, 2026</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FIXTURES -->
+<div class="sec" style="padding-top:0">
+  <div class="sec-head"><div><div class="sec-tag">Schedule</div><h2 class="sec-title">Upcoming Fixtures</h2></div><a href="#" class="sec-link">Full Schedule</a></div>
+  <div class="fix-scroll">
+    <div class="fix-card next"><div class="fix-comp">Easter Event</div><div class="fix-row"><div class="fix-team"><div class="fix-badge hb">SK</div><div class="fix-name">Sunblazer</div></div><div class="fix-vs">vs</div><div class="fix-team"><div class="fix-badge ab">DS</div><div class="fix-name">Davie Sharks</div></div></div><div class="fix-foot"><span class="fix-date">Sat, Apr 5</span><span class="fix-time">12:00 PM</span></div></div>
+    <div class="fix-card"><div class="fix-comp">Carnival 5v5</div><div class="fix-row"><div class="fix-team"><div class="fix-badge hb">SK</div><div class="fix-name">Sunblazer</div></div><div class="fix-vs">vs</div><div class="fix-team"><div class="fix-badge ab">TBD</div><div class="fix-name">TBD</div></div></div><div class="fix-foot"><span class="fix-date">Sat, Apr 4</span><span class="fix-time">TBD</span></div></div>
+    <div class="fix-card"><div class="fix-comp">Davie Sharks Cup</div><div class="fix-row"><div class="fix-team"><div class="fix-badge hb">SK</div><div class="fix-name">Sunblazer</div></div><div class="fix-vs">vs</div><div class="fix-team"><div class="fix-badge ab">MIX</div><div class="fix-name">Multiple</div></div></div><div class="fix-foot"><span class="fix-date">Apr 10-12</span><span class="fix-time">$100/Player</span></div></div>
+    <div class="fix-card"><div class="fix-comp">Kiwanis 5v5</div><div class="fix-row"><div class="fix-team"><div class="fix-badge hb">SK</div><div class="fix-name">Sunblazer</div></div><div class="fix-vs">vs</div><div class="fix-team"><div class="fix-badge ab">TBD</div><div class="fix-name">TBD</div></div></div><div class="fix-foot"><span class="fix-date">May 16-17</span><span class="fix-time">$30-35</span></div></div>
+    <div class="fix-card"><div class="fix-comp">Disney Tournament</div><div class="fix-row"><div class="fix-team"><div class="fix-badge hb">SK</div><div class="fix-name">Sunblazer</div></div><div class="fix-vs">vs</div><div class="fix-team"><div class="fix-badge ab">TBD</div><div class="fix-name">TBD</div></div></div><div class="fix-foot"><span class="fix-date">May 23-25</span><span class="fix-time">$125/Player</span></div></div>
+  </div>
+</div>
+
+<!-- MOTTO -->
+<div class="motto-sec">
+  <div class="shield-watermark" style="left:50%;top:50%;transform:translate(-50%,-50%);width:500px;height:500px;opacity:.02">
+    <svg><use href="#shield" style="color:var(--blue-100)"/></svg>
+  </div>
+  <div class="motto-crest"><img src="sk sunblazer.png" alt="SK Sunblazer"></div>
+  <div class="motto-text">HEART <span class="dot"></span> STRENGTH <span class="dot"></span> COURAGE</div>
+  <div class="motto-sub">Since 1992 &middot; Miami, Florida</div>
+</div>
+
+<!-- PLAYERS -->
+<section class="players-sec">
+  <div class="shield-watermark" style="left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:700px;opacity:.025">
+    <svg><use href="#shield" style="color:var(--gold)"/></svg>
+  </div>
+  <div class="sec" style="padding:80px 24px">
+    <div class="sec-head"><div><div class="sec-tag">Squad</div><h2 class="sec-title">U10 Roster</h2></div><a href="#" class="sec-link">Full Squad</a></div>
+    <div class="p-grid">
+      <div class="p-card"><div class="p-img"><img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&q=80" alt="Player"><div class="p-num">7</div></div><div class="p-info"><div class="p-pos">Forward</div><div class="p-name">M. Rodriguez</div></div></div>
+      <div class="p-card"><div class="p-img"><img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&q=80" alt="Player"><div class="p-num">10</div></div><div class="p-info"><div class="p-pos">Midfielder</div><div class="p-name">D. Santos</div></div></div>
+      <div class="p-card"><div class="p-img"><img src="https://images.unsplash.com/photo-1596466090785-22a5c6dd0541?w=400&q=80" alt="Player"><div class="p-num">4</div></div><div class="p-info"><div class="p-pos">Defender</div><div class="p-name">L. Martinez</div></div></div>
+      <div class="p-card"><div class="p-img"><img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&q=80" alt="Player"><div class="p-num">1</div></div><div class="p-info"><div class="p-pos">Goalkeeper</div><div class="p-name">A. Perez</div></div></div>
+      <div class="p-card"><div class="p-img"><img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=80" alt="Player"><div class="p-num">9</div></div><div class="p-info"><div class="p-pos">Striker</div><div class="p-name">J. Lopez</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="shield-watermark sl"><svg><use href="#shield" style="color:var(--gold)"/></svg></div>
+  <div class="shield-watermark sr"><svg><use href="#shield" style="color:var(--gold)"/></svg></div>
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-n">34</div><div class="stat-l">Years in Miami</div></div>
+    <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Active Players</div></div>
+    <div class="stat"><div class="stat-n">12</div><div class="stat-l">Teams</div></div>
+    <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Tournaments Won</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="shield-watermark cl"><svg><use href="#shield" style="color:var(--royal-light)"/></svg></div>
+  <div class="shield-watermark cr"><svg><use href="#shield" style="color:var(--royal-light)"/></svg></div>
+  <div class="cta-body">
+    <h2>JOIN THE<br><em>SUNBLAZER</em> FAMILY</h2>
+    <p class="cta-sub">Tryouts begin May 3rd. Summer camp kicks off June 8th. Secure your spot and become part of Miami's most passionate soccer community.</p>
+    <div class="hero-btns" style="justify-content:center"><a href="#" class="btn-a">Register Now</a><a href="#" class="btn-b">Contact Coach Thomas</a></div>
+    <div class="cta-badges">
+      <div class="cta-badge"><div class="cta-icon">&#9917;</div><div class="cta-txt">Ages 5-18</div></div>
+      <div class="cta-badge"><div class="cta-icon">&#128205;</div><div class="cta-txt">Miami, FL</div></div>
+      <div class="cta-badge"><div class="cta-icon">&#127942;</div><div class="cta-txt">Competitive</div></div>
+      <div class="cta-badge"><div class="cta-icon">&#127891;</div><div class="cta-txt">Development</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="shield-watermark" style="right:30px;bottom:20px;width:180px;height:180px;opacity:.02"><svg><use href="#shield" style="color:var(--blue-100)"/></svg></div>
+  <div class="foot-in">
+    <div class="foot-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="sk sunblazer.png" alt="SK Sunblazer" style="width:48px;height:48px;object-fit:contain"><div class="nav-name" style="font-size:18px">SK Sunblazer<span>Soccer Club</span></div></div>
+        <p class="foot-desc">Developing champions on and off the pitch since 1992. SK Sunblazer Soccer Club is committed to building character, discipline, and a love for the beautiful game in the Miami community.</p>
+        <div class="foot-social"><a href="#">IG</a><a href="#">FB</a><a href="#">TK</a><a href="#">YT</a></div>
+      </div>
+      <div><h4>Club</h4><ul class="foot-links"><li><a href="#">About Us</a></li><li><a href="#">Coaching Staff</a></li><li><a href="#">History</a></li><li><a href="#">Facilities</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Programs</h4><ul class="foot-links"><li><a href="#">Tryouts</a></li><li><a href="#">Summer Camp</a></li><li><a href="#">Tournaments</a></li><li><a href="#">Training Academy</a></li><li><a href="#">Private Sessions</a></li></ul></div>
+      <div><h4>Info</h4><ul class="foot-links"><li><a href="#">Schedule</a></li><li><a href="#">Fees & Registration</a></li><li><a href="#">Uniform Shop</a></li><li><a href="#">Sponsors</a></li><li><a href="#">Volunteer</a></li></ul></div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 SK Sunblazer Soccer Club. All rights reserved.</span><div class="foot-partners"><span>US Soccer</span><span>FYSA</span><span>Miami-Dade Parks</span></div></div>
+    <div class="foot-by">Website by <a href="https://santiagoguyfilms.com">Santiago Guy Films</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const t=new Date('2026-04-05T12:00:00-04:00');
+  function u(){const n=new Date(),d=Math.max(0,t-n);
+    document.getElementById('days').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
+    document.getElementById('hours').textContent=String(Math.floor(d%864e5/36e5)).padStart(2,'0');
+    document.getElementById('mins').textContent=String(Math.floor(d%36e5/6e4)).padStart(2,'0');
+    document.getElementById('secs').textContent=String(Math.floor(d%6e4/1e3)).padStart(2,'0');
+  }u();setInterval(u,1000);
+})();
+</script>
+</body>
+</html>
